@@ -5,10 +5,9 @@ import (
 )
 
 
-
-
 func Router() *mux.Router{
 	router := mux.NewRouter()
-	router.HandleFunc("/plan", GetAllPlansHandler).Methods("GET", "OPTIONS")
+	router.HandleFunc("/plan", GetAllPlans).Methods("GET", "OPTIONS")
+	router.HandleFunc("/plan", AddPlan).Methods("POST", "OPTIONS")
 	return router
 }

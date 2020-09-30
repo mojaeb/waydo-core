@@ -1,18 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"log"
+	"fmt"
 	"waydo/router"
-	"waydo/db"
 )
 
 
 func main() {
 	r := router.Router()
-
-	db.New()
-	fmt.Println("this is sample app with golang...")
+	fmt.Println("Waydo is running on localhost:8082")
 	log.Fatal(http.ListenAndServe(":8082", r))
 }

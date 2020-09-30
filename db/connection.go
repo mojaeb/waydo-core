@@ -5,22 +5,30 @@ import (
 	"github.com/joho/godotenv"
 	"log"
 	"os"
-	_ "database/sql"
+	"database/sql"
 	_ "github.com/lib/pq"
 )
 
-var (
-	host
-)
 
-func New() {
+func New() *sql.DB{
+	// get environment variable from .env file
 	err := godotenv.Load(".env")
+	// check env file received
 	if err != nil {
 		log.Fatalf("load .env file was denied")
 	}
-	const CONNECTION_STRING string = fmt.Sprintf("host=%s port=%d user=%s "+
-    "password=%s dbname=%s sslmode=disable", os.Getenv("HOST"), os.Getenv("PORT"), os.Getenv("USER"), os.Getenv("PASSWORD"), os.Getenv("DB_NAME"))
-	fmt.Printf("create connection to database %v \n", os.Getenv("USER"))
+	db, err := sql.Open("postgres", os.Getenv("CONNECTION_STRING"))
+	if err != nil {
+		log.Fatal("error in connection to database")
+	}
+	//check databse is connected
+	err = db.Ping()
+	if err != nil {
+		log.Fatal("db not response to server..")
+	}
+	fmt.Println("connection to database was successfuly :D")
+
+	return db
 }
 
 func Migration() {}

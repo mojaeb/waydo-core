@@ -5,6 +5,10 @@ import (
 	"fmt"
 )
 
-func GetAllPlansHandler(w http.ResponseWriter, r *http.Request) {
+func GetAllPlans(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "plans of your mind")
+}
+
+func AddPlan(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "create a plan")
 }
