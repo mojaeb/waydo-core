@@ -1,12 +1,11 @@
 package main
 
 import (
-	"net/http"
-	"log"
 	"fmt"
+	"log"
+	"net/http"
 	"waydo/router"
 )
-
 
 func main() {
 	r := router.Router()
