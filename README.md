@@ -1,2 +1,4 @@
 # waydo-core
-what are you doing?! this application change your mind about planning
+
+plan manager application based on pure golang and postgresql
+
